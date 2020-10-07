@@ -1,10 +1,10 @@
 #include <algorithm>
 #include <cstdlib>
 #include <cstdio>
-#include <ctime>
 #include <iterator>
 #include <set>
 #include <string>
+#include <sys/time.h>
 #include <vector>
 
 /* This program
@@ -77,7 +77,9 @@ int main(int argc, char ** argv)
 			exit(1);
 		}
 
-		srand(time(nullptr));
+		timeval tv;
+		gettimeofday(&tv, nullptr);
+		srand(tv.tv_usec);
 
 		int val;
 
